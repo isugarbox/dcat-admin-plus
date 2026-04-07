@@ -1,21 +1,18 @@
 {
-    "name": "dcat/laravel-admin",
+    "name": "isugarbox/dcat-admin-plus",
     "description": "dcat admin",
     "type": "library",
     "keywords": [
-        "dcat",
         "laravel",
-        "admin",
-        "grid",
-        "form",
-        "laravel admin"
+        "dcat",
+        "admin"
     ],
-    "homepage": "https://github.com/jqhph/dcat-admin",
+    "homepage": "https://github.com/isugarbox/dcat-admin-plus",
     "license": "MIT",
     "authors": [
         {
-            "name": "jqh",
-            "email": "841324345@qq.com"
+            "name": "isugarbox",
+            "email": "isugarbox@126.com"
         }
     ],
     "require": {
