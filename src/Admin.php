@@ -542,8 +542,9 @@ class Admin
 
         $jsVariables['pjax_container_selector'] = $pjaxId ? ('#'.$pjaxId) : '';
         $jsVariables['token'] = csrf_token();
+        $lang = __('admin.client');
         if (is_array($lang)) {
-            $jsVariables['lang'] = ($lang = __('admin.client')) ? array_merge($lang, $jsVariables['lang'] ?? []) : [];
+            $jsVariables['lang'] = array_merge($lang, $jsVariables['lang'] ?? []);
         } else {
             $jsVariables['lang'] = $jsVariables['lang'] ?? [];
         }
