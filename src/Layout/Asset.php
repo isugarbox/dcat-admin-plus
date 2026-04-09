@@ -180,6 +180,13 @@ class Asset
         '@autocomplete' => [
             'js' => '@admin/dcat/plugins/autocomplete/jquery.autocomplete.min.js',
         ],
+        '@fullcalendar' => [
+            'js' => [
+                '@admin/dcat/plugins/fullcalendar/main.js',
+                '@admin/dcat/plugins/fullcalendar/locales-all.js',
+            ],
+            'css' => '@admin/dcat/plugins/fullcalendar/main.css',
+        ],
     ];
 
     /**
