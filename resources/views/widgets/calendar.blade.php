@@ -210,11 +210,15 @@
 
                     // 循环每一天
                     let currentDate = new Date(start);
+                    let i = 0;
+
                     while (currentDate <= end) {
+                        i ++;
                         calendar.addEvent({
                             id: item.id + '_' + currentDate.getTime(), // 唯一ID
-                            title: '处方：' + (item.body_part?.name ?? '部位'),
-                            start: new Date(currentDate).toISOString().split('T')[0],
+                            title: i + '处方：' + (item.body_part?.name ?? '部位'),
+                            start: formatDateTime(currentDate),
+                            // end: e,
                             display: 'list-item', // 圆点
                             color: '#3788d8',
                             allDay: true,
@@ -222,7 +226,6 @@
                             description: '部位：' + (item.body_part?.name ?? '') + '，运动模型：' + (item.sport_mode?.name ?? '') + '，计量方式：' + (item.measurement_mode?.name ?? '') + '，设备种类：' + (item.category?.name ?? '') + getGroups(item),
                         });
 
-                        // 日期 +1 天（纯原生 JS）
                         currentDate.setDate(currentDate.getDate() + 1);
                     }
                 });
@@ -237,15 +240,13 @@
                     let start = new Date(item.started_at);
                     let end = new Date(item.ended_at);
 
-                    console.log(start);
-
                     // 循环每一天
                     let currentDate = new Date(start);
                     while (currentDate <= end) {
                         calendar.addEvent({
                             id: item.id + '_' + currentDate.getTime(), // 唯一ID
                             title: '运动：' + (item.body_part?.name ?? '部位'),
-                            start: new Date(currentDate).toISOString().split('T')[0],
+                            start: formatDateTime(currentDate),
                             display: 'list-item', // 圆点
                             color: '#52C41A',
                             allDay: true,
@@ -261,6 +262,17 @@
             }
         });
     });
+
+    function formatDateTime(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份补零
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
 
     function getGroups(prescription) {
         var groups = JSON.parse(prescription.groups);
